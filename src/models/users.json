@@ -1,0 +1,27 @@
+[
+	{
+		"name": "mscheffer",
+		"email": "mscheffer@gmail.com",
+		"password": "123",
+		"roles": [
+			2,
+			3
+		],
+		"person": {
+			"firstName": "Maru",
+			"lastName": "Scheffer"
+		}
+	},
+	{
+		"name": "lolguin",
+		"email": "lolguin@iinfo.unsj.edu.ar",
+		"password": "1234",
+		"roles": [
+			1
+		],
+		"person": {
+			"firstName": "Luis Alberto",
+			"lastName": "Olguín"
+		}
+	}
+]
