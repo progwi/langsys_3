@@ -96,6 +96,11 @@ class User
 		$this->roles[] = $role;
 	}
 
+	public function getRoles()
+	{
+		return $this->roles;
+	}
+
 	public function setPerson(Person $person)
 	{
 		$this->person = $person;
@@ -107,12 +112,17 @@ class User
 		return $this->person;
 	}
 
-	/*
+	// to string
+	public function __toString()
+	{
+		return $this->name . ' - ' . $this->getPerson()->getFirstName() ;
+	}
+
 	public function maxRole()
 	{
 		$max = 0;
 		$maxRole = null;
-		foreach ($this->roles as $role) {
+		foreach ($this->getRoles() as $role) {
 			if ($role->getId() > $max) {
 				$max = $role->getId();
 				$maxRole = $role;
@@ -120,5 +130,4 @@ class User
 		}
 		return $maxRole;
 	}
-	*/
 }

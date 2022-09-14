@@ -69,5 +69,33 @@ foreach ($initialUsers as $user) {
 	$entityManager->persist($newPerson);
 }
 
-
 $entityManager->flush();
+
+// Querying for all users
+$userRepository = $entityManager->getRepository(User::class);
+$users = $userRepository->findAll();
+
+foreach ($users as $user) {
+	echo $user . PHP_EOL;
+}
+
+// Querying for a single user
+$user = $userRepository->findOneBy(['id' => 1]);
+echo $user . PHP_EOL;
+
+// Querying with DQL
+$dql = "SELECT u FROM User u WHERE u.id = ?1 ORDER BY u.name ASC";
+$query = $entityManager->createQuery($dql);
+$query->setParameter(1, 3);
+$user = $query->getSingleResult();
+
+echo $user . " is " . $user->maxRole() . PHP_EOL;
+
+// Query  one user and his bigger role according its id
+$dql = "SELECT u, r.id FROM User u JOIN u.roles r WHERE u.id = ?1 ORDER BY r.id DESC";
+$query = $entityManager->createQuery($dql);
+$query->setParameter(1, 3);
+$userRole = $query->getSingleResult();
+
+echo $userRole[0] . ' is ' . $userRole['id'] . PHP_EOL;
+
