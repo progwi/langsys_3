@@ -36,7 +36,8 @@ class User
 	private $password;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="Person")
+	 * @ORM\OneToOne(targetEntity="Person", cascade={"remove"})
+	 * 
 	 * @var Person
 	 */
 	private $person;
@@ -47,11 +48,17 @@ class User
 	 */
 	private $roles;
 
-	public function __construct($name, $email, $password)
-	{
-		$this->name = $name;
-		$this->email = $email;
-		$this->password = $password;
+	public function __construct(
+		$data = [
+			"name"		=> '',
+			"email"		=> '',
+			"password"	=> ''
+		]
+	) {
+		$this->name = $data['name'];
+		$this->email = $data['email'];
+		$this->password = $data['password'] ?? '123456';
+		$this->roles = new ArrayCollection();
 	}
 
 	public function getId()

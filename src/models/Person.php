@@ -24,7 +24,7 @@ class Person
 	 * @ORM\Column(type="string")
 	 */
 	private $lastName;
-	
+
 	/**
 	 * @ORM\Column(type="float")
 	 */
@@ -36,16 +36,22 @@ class Person
 	private $birthDate;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="User")
+	 * @ORM\OneToOne(targetEntity="User", cascade={"remove"})
 	 */
 	private $user;
 
-	public function __construct($firstName, $lastName)
-	{
-		$this->firstName = $firstName;
-		$this->lastName = $lastName;
-		$this->height = 1.80;
-		$this->birthDate = new DateTime();
+	public function __construct(
+		$data =	[
+			"firstName"	=> '',
+			"lastName"	=> '',
+			"height"		=> 1.80,
+			"birthDate"	=> ''
+		]
+	) {
+		$this->firstName = $data['firstName'];
+		$this->lastName = $data['lastName'];
+		$this->height = $data['height'] ?? 1.80;
+		$this->birthDate = $data['birthDate'] ?? new DateTime();
 	}
 
 	public function getId()

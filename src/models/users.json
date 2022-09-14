@@ -23,5 +23,16 @@
 			"firstName": "Luis Alberto",
 			"lastName": "Olguín"
 		}
+	},
+	{
+		"name": "eormeno",
+		"email": "eormeno@gmail.com",
+		"roles": [
+			4
+		],
+		"person": {
+			"firstName": "Emilio",
+			"lastName": "Ormeño"
+		}
 	}
 ]
